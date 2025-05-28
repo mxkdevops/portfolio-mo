@@ -236,3 +236,44 @@ git pull origin main
 ```bash
 https://github.com/settings/personal-access-tokens
 ```
+The error identity_sign: private key ... contents do not match public means your private key and public key pair don’t match or your SSH keys are corrupted/misconfigured.
+
+```bash
+How to fix:
+## 1. Backup and Remove Old SSH Keys
+cd ~/.ssh
+mkdir backup
+move id_rsa* backup/
+## 2. Generate a New SSH Key Pair
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+Press Enter to accept defaults
+
+(Optional) add a passphrase or leave empty
+
+## 3. Start ssh-agent and Add New Key
+
+## 4. Copy Your New Public Key
+
+cat ~/.ssh/id_rsa.pub
+Copy all the output.
+
+## 5. Add the New Public Key to GitHub
+Go to https://github.com/settings/keys
+
+Click New SSH key
+
+Paste your new public key
+
+## 6. Test SSH Connection
+
+ssh -T git@github.com
+You should see:
+
+
+Hi username! You've successfully authenticated...
+Optional: Reset your Git remote URL to SSH if needed
+
+git remote set-url origin git@github.com:mxkdevops/portfolio-mo.git
+
+```
