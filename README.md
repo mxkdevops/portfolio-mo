@@ -230,3 +230,9 @@ ipconfig /flushdns
 ```bash
 git pull origin main
 ```
+
+### Delete personal access token
+
+```bash
+https://github.com/settings/personal-access-tokens
+```
