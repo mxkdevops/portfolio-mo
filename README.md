@@ -190,12 +190,12 @@ Then paste the corrected JSON from earlier.
 Go to AWS Certificate Manager (in us-east-1).
 Click “Request a public certificate”.
 Add the domain:
-agilesynergyltd.com
-www.agilesynergyltd.com (optional)
+portfolio.mkcloudai.com
+w
 Choose DNS Validation ✅.
 ACM will give you CNAME record(s) to add in Route 53.
 Step 5: Add CNAME Records in Route 53
-Go to Route 53 → Hosted Zones → agilesynergyltd.com.
+Go to Route 53 → Hosted Zones → portfolio.mkcloudai.com
 Click “Create Record”.
 Type: CNAME
 Name & value: Copy from ACM.
@@ -216,13 +216,17 @@ You can now use this certificate in CloudFront or ALB
 
 ✅ Test live website
 ```bash
-Visit: https://agilesynergyltd.com ✅
-nslookup -type=ns agilesynergyltd.com
-whois agilesynergyltd.com
-ping agilesynergyltd.com
-tracert agilesynergyltd.com
+Visit: https://portfolio.mkcloudai.com ✅
+nslookup -type=ns portfolio.mkcloudai.com
+whois portfolio.mkcloudai.com
+ping portfolio.mkcloudai.com
+tracert portfolio.mkcloudai.com
 ipconfig /flushdns
 ```
 
 ✅  Add CloudFront cache invalidation to CI/CD
 
+### If any change from github
+```bash
+git pull origin main
+```
