@@ -159,47 +159,67 @@ Save and copy the Distribution ID
 ### Apply Secure Bucket Policy to Allow CloudFront Access
 Description:
  To keep your S3 bucket private while allowing CloudFront to fetch your files, apply the following policy. This ensures the public cannot directly access your bucket.
-Then paste the corrected JSON from earlier.
+ Amazon S3-Buckets-portfolio.mkcloudai.com-Edit bucket policy
+Get the policy from CloudFront-Distributions-E3PDGZ0JGLMUFB
+-Edit origin
+
 ```bash
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowCloudFrontServicePrincipalReadOnly",
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "cloudfront.amazonaws.com"
-            },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::agilesynergyltd.com/*",
-            "Condition": {
-                "StringEquals": {
-                    "AWS:SourceArn": "arn:aws:cloudfront::355804389681:distribution/E1W96NCO1QA5K6"
+        "Version": "2008-10-17",
+        "Id": "PolicyForCloudFrontPrivateContent",
+        "Statement": [
+            {
+                "Sid": "AllowCloudFrontServicePrincipal",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "cloudfront.amazonaws.com"
+                },
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::portfolio.mkcloudai.com/*",
+                "Condition": {
+                    "StringEquals": {
+                      "AWS:SourceArn": "arn:aws:cloudfront::355804389681:distribution/E3PDGZ0JGLMUFB"
+                    }
                 }
             }
-        }
-    ]
-
+        ]
+      }
 ```
 
 
 
-✅[ Request SSL certificate in ACM (for agilesynergyltd.com)](https://docs.google.com/document/d/1JITJ2r5EPSsZdbaxmWQMmBB_GvnjvAIqItDiTdyi5Go/edit?tab=t.yqbrjyk4t996)
+
 ### Request SSL Certificate for Domain
 ```bash
 Go to AWS Certificate Manager (in us-east-1).
 Click “Request a public certificate”.
 Add the domain:
 portfolio.mkcloudai.com
-w
+
 Choose DNS Validation ✅.
 ACM will give you CNAME record(s) to add in Route 53.
 Step 5: Add CNAME Records in Route 53
-Go to Route 53 → Hosted Zones → portfolio.mkcloudai.com
+Go to Route 53 → Hosted Zones → mkcloudai.com
 Click “Create Record”.
 Type: CNAME
 Name & value: Copy from ACM.
 Save.
+
+## 1. If your portfolio site is hosted on S3 + CloudFront
+You need to add a CNAME or Alias record in Route 53 for portfolio.mkcloudai pointing to your CloudFront distribution domain (e.g., d1234abcd.cloudfront.net).
+
+### Steps:
+
+Open Route 53 Console
+Go to your hosted zone for mkcloudai.com
+Click Create Record
+Set:
+Record name: portfolio (so it’s portfolio.mkcloudai)
+Record type: A – IPv4 address
+Select Alias: Yes
+Alias Target: Choose your CloudFront distribution domain from the dropdown or paste it manually
+
+Save
 
 📌 Important: Don’t modify the CNAME values. ACM checks this automatically.
 
