@@ -85,7 +85,7 @@ Under the Secrets tab, click “New repository secret"
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_REGION = us-east-1 (or your region)
-S3_BUCKET_NAME = agilesynergyltd.com
+S3_BUCKET_NAME = portfolio.mkcloudai.com
 CLOUDFRONT_DISTRIBUTION_ID = from CloudFront dashboard
 
 ```
@@ -137,7 +137,7 @@ Go to AWS CloudFront Console
 Click Security > Origin access
 Click Create control setting
 Use these values:
-Name: OAC-agilesynergyltd
+Name: OAC portfolio.mkcloudai.com
 Signing behavior: Always
 Signing protocol: SigV4
 Origin type: S3
