@@ -214,7 +214,7 @@ Open Route 53 Console
 Go to your hosted zone for mkcloudai.com
 Click Create Record
 Set:
-Record name: portfolio (so it’s portfolio.mkcloudai)
+Record name: portfolio (so it’s portfolio.mkcloudai.com)
 Record type: A – IPv4 address
 Select Alias: Yes
 Alias Target: Choose your CloudFront distribution domain from the dropdown or paste it manually
