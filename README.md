@@ -150,7 +150,7 @@ Go to CloudFront > Create Distribution
 Origin Domain: your S3 bucket endpoint
 Access: ✅ Use Origin Access Control (OAC)
 Create OAC and attach to the S3 bucket
-Alternate Domain Name (CNAME): agilesynergyltd.com
+Alternate Domain Name (CNAME): portfolio.mkcloudai.com
 SSL Certificate: select from ACM (see next step)
 Save and copy the Distribution ID
 
